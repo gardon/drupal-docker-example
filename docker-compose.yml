@@ -1,0 +1,47 @@
+version: '3'
+services:
+  web:
+    image: drupal:8-apache
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
+    ports:
+     - "80:80"
+    volumes:
+     - .:/var/www:cached
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
+    ports:
+     - "3306:3306"
+    volumes:
+     - /var/lib/mysql
+     - ./db-backups:/tmp/db-backups:cached
+  pma:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+      PHP_UPLOAD_MAX_FILESIZE: 1G
+      PHP_MAX_INPUT_VARS: 1G
+    ports:
+      - "8001:80"
+
+  drush:
+    image: drush/drush
+    volumes:
+     - .:/app:cached
+
+  drupal:
+    image: drush/drush
+    entrypoint: /app/vendor/bin/drupal
+    volumes:
+     - .:/app:cached
