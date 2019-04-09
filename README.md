@@ -12,10 +12,10 @@ This very simple setup contains a minimalistic approach for using Docker Compose
 
 1. `composer install`
 1. `docker-compose up -d`
-1. Navigate to http://localhost to install and use Drupal site, DB credentials:
-  Host: "db"
-  Database name: "drupal"
-  Database username: "drupal"
+1. Navigate to http://localhost to install and use Drupal site, DB credentials:  
+  Host: "db"  
+  Database name: "drupal"  
+  Database username: "drupal"  
   Database password: "drupal"
 
 # Usage
