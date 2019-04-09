@@ -20,6 +20,16 @@ This very simple setup contains a minimalistic approach for using Docker Compose
 
 # Usage
 
-1. `docker-compose run drush [drush-cmmd]` for drush commands
-1. `docker-compose run drupal [drupal-console-cmd]` for Drupal Console commands
-
+1. Drush and Drupal Console:
+  ``` 
+  $ docker-compose run cli
+  $ drush 
+  $ drupal
+  ```
+1. PHPMyAdmin: Navigate to `http://localhost:8001`
+1. Installing modules:
+  ```
+  $ composer require drupal/examples
+  $ docker-compose run cli
+  $ drush en examples
+  ```

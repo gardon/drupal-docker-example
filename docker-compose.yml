@@ -35,13 +35,15 @@ services:
     ports:
       - "8001:80"
 
-  drush:
-    image: drush/drush
+  cli:
+    image: drupal:8-apache
+    command: /bin/bash
+    environment:
+      PATH: /var/www/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
     volumes:
-     - .:/app:cached
+     - .:/var/www:cached
 
-  drupal:
-    image: drush/drush
-    entrypoint: /app/vendor/bin/drupal
-    volumes:
-     - .:/app:cached
