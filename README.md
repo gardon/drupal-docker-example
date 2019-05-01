@@ -17,6 +17,12 @@ This very simple setup contains a minimalistic approach for using Docker Compose
   Database name: "drupal"  
   Database username: "drupal"  
   Database password: "drupal"
+  
+> Note: If you want to install using Drush, you may need to use the `cli` container (See below), and then install mysql client:
+```
+$ apt-get update
+$ apt-get install mysql-client
+```
 
 # Usage
 
