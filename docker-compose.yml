@@ -19,8 +19,6 @@ services:
       MYSQL_DATABASE: drupal
       MYSQL_USER: drupal
       MYSQL_PASSWORD: drupal
-    ports:
-     - "3306:3306"
     volumes:
      - /var/lib/mysql
      - ./db-backups:/tmp/db-backups:cached
